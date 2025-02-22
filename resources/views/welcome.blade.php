@@ -14,7 +14,7 @@
     @endif
 </head>
 <body>
-    <h1 class="text-red-400 text-5xl">Welcome to Toledo-app</h1>
+    <h1 class="text-red-400 text-5xl font-sans m-2">Welcome to Toledo-app</h1>
 
 </body>
 </html>
