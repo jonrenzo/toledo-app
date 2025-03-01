@@ -16,16 +16,18 @@ class UserServiceProvider extends ServiceProvider
             $users = [
                 // Entry 1
                 [
+                    'id' => 1,
                     'name' => 'John Doe',
                     'email' => 'john@doe.com',
-                    'gender' => 'male'
+                    'gender' => 'male',
                 ],
                 // Entry 2
                 [
+                    'id' => 2,
                     'name' => 'Jane Doe',
                     'email' => 'jane@doe.com',
-                    'gender' => 'female'
-                ]
+                    'gender' => 'female',
+                ],
             ];
 
             return new UserService($users);
