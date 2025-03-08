@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Services\ProductService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -50,18 +52,26 @@ Route::middleware(['user-middleware'])->group(function () {
     });
 });
 
-Route::controller(UserController::class)->group(function(){
-    Route::get('/users', 'index');
-    Route::get('/users/first', 'first');
-    Route::get('/users/{id}', 'show');
+Route::controller(UserController::class)->group(function () {
+    Route::get('users', 'index');
+    Route::get('users/first', 'first');
+    Route::get('users/{id}', 'show');
 });
 
-Route::get('/token', function(Request $request){
+Route::get('token', function (Request $request) {
     return view('token');
 });
 
-Route::post('/token', function(Request $request){
+Route::post('token', function (Request $request) {
     return $request->all();
 });
 
+Route::get('users', [UserController::class, 'index'])->middleware('user-middleware');
 
+Route::resource('products', ProductController::class);
+
+Route::get('product-list', function (ProductService $productService) {
+    $data['products'] = $productService->listProducts();
+
+    return view('products.list', $data);
+});
