@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index(UserService $userService)
     {
-        return $userService->listUsers();
+        return view('users.index', ['users' => $userService->listUsers()]);
     }
 
     public function first(USerService $userService)

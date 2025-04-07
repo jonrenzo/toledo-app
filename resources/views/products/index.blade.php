@@ -1,26 +1,30 @@
-<!DOCTYPE html>
-<html>
-<body>
-<p>Products: </p>
-<table>
-    <thead>
-    <tr>
-        @foreach (['Id', 'Name', 'Category'] as $column)
-            <td>{{ $column }}</td>
-        @endforeach
-    </tr>
-
-    <tbody>
-    @foreach ($products as $product)
+<x-layout>
+    <x-slot:heading>Product <List></List></x-slot:heading>
+    <x-table class="table">
+        <thead>
         <tr>
-            <td>{{ $product['id'] }}</td>
-            <td>{{ $product['name'] }}</td>
-            <td>{{ $product['category'] }}</td>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
         </tr>
-    @endforeach
-    </tbody>
-</table>
+        </thead>
 
+        <tbody>
+        @foreach ($products as $product)
+            <tr>
+                <td>{{ $product['id'] }}</td>
+                <td>{{ $product['name'] }}</td>
+                <td>{{ $product['category'] }}</td>
+            </tr>
+        @endforeach
+        </tbody>
+
+    </x-table>
+</x-layout>
+
+
+
+<!--
 <p>Tasks: </p>
 <ul>
     @foreach($tasks as $task)
@@ -32,6 +36,4 @@
 <p>{{ $sharedVariables }}</p>
 
 <p>Product Key: {{ $productKey }}</p>
-
-</body>
-</html>
+-->
